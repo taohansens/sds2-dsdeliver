@@ -50,11 +50,11 @@ public class Product implements Serializable {
 		this.name = name;
 	}
 
-	public Double getPrices() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrices(Double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
