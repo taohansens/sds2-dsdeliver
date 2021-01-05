@@ -9,4 +9,8 @@ import com.devsuperior.dsdeliver.entities.Product;
 public interface ProductRepository extends JpaRepository<Product, Long> {
 	
 	List<Product> findAllByOrderByNameAsc();
+	
+	/* JPA Documentation QueryMethods
+	 * https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods
+	 */
 }
