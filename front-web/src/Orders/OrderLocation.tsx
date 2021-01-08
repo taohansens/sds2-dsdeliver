@@ -13,6 +13,7 @@ function OrderLocation() {
           Selecione onde o pedido deve ser entregue:
         </h3>
         <div className="filter-container">
+          </div>
           <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
             <TileLayer
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -26,7 +27,6 @@ function OrderLocation() {
           </MapContainer>
         </div>
       </div>
-    </div>
   );
 }
 export default OrderLocation;
