@@ -1,5 +1,6 @@
+import { useIsFocused, useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, ScrollView, Text, Alert, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, ScrollView, View, Text, Alert, TouchableWithoutFeedback } from 'react-native';
 import { fetchOrders } from '../api';
 import Header from '../Header';
 import OrderCard from '../OrderCard';
@@ -8,15 +9,28 @@ import { Order } from '../types';
 function Orders() {
   const [orders, setOrders] = useState<Order[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const navigation = useNavigation();
+  const isFocused = useIsFocused();
 
-
-  useEffect(() => {
+  const fetchData = () => {
     setIsLoading(true);
     fetchOrders()
     .then(response => setOrders(response.data))
     .catch(error => Alert.alert('Erro de conexão'))
     .finally(() => setIsLoading(false));
-  }, []);
+  }
+
+  useEffect(() => {
+    if (isFocused){
+      fetchData();
+    }
+  }, [isFocused]);
+  
+  const handleOnPress = (order: Order) => {
+    navigation.navigate('OrderDetails', {
+      order
+    });
+  }
 
   return (
     <>
@@ -24,10 +38,15 @@ function Orders() {
     <ScrollView style={styles.container}>
       {isLoading ? (
         <Text style={styles.text}>Carregando pedidos...</Text>
-      ) : (
-        orders.map(order =>(
-          <TouchableWithoutFeedback key={order.id}>
+        ) : ( 
+          orders.map(order => (
+          <TouchableWithoutFeedback
+          key={order.id}
+          onPress={() => handleOnPress(order)}
+          >
+            <View>
             <OrderCard order={order} />
+            </View>
           </TouchableWithoutFeedback>
         ))
       )}
