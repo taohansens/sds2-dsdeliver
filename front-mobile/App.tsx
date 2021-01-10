@@ -5,6 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { useFonts, OpenSans_400Regular, OpenSans_700Bold } from '@expo-google-fonts/open-sans';
 import AppLoading from 'expo-app-loading';
 import Header from './src/Header';
+import Home from './src/Home';
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -18,8 +19,9 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Header />
       <StatusBar style="light" />
+      <Header />
+      <Home />
     </View>
   );
 }
