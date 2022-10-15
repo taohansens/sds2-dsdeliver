@@ -100,7 +100,7 @@ Este projeto foi desenvolvido com as seguintes tecnologias:
 
 <figure>
 <div align="center">
-  <img src=".github/img/layout.png"  alt="Layouts">
+  <img src=".github/img/Layout.png"  alt="Layouts">
   <figcaption>Layout das telas da aplicação</figcaption>
 </div>
 </figure>
